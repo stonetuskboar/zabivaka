@@ -9,7 +9,7 @@
 </head>
 <body>
     <script type="module">
-       window.jsonData =  async fileName => await (await fetch(`${fileName}.json`)).json();
+       window.jsonData =  async monster => await (await fetch(`monster.json`)).json();
         var stats = new status(await jsonData());
         var adventure = document.getElementById('adventure');
         adventure.onmouseup= function(){stats.Progress(document)};
