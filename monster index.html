@@ -9,10 +9,16 @@
 </head>
 <body>
     <script type="module">
-       window.jsonData =  async monster => await (await fetch(`monster.json`)).json();
-        var stats = new status(await jsonData());
-        var adventure = document.getElementById('adventure');
-        adventure.onmouseup= function(){stats.Progress(document)};
+         fetch(`monster.json`).then(
+            function(get){
+                return get.json()
+            }).then(function(get){   
+                window.jsonData =get;     
+                var stats = new status(window.jsonData);
+                console.log(jsonData)
+                var adventure = document.getElementById('adventure');
+                adventure.onmouseup= function(){stats.Progress(document)};
+            })
 
     </script>
 
