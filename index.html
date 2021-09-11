@@ -14,7 +14,8 @@
                 return get.json()
             }).then(function(get){   
                 window.jsonData =get;     
-                var stats = new status(window.jsonData);
+                var stats = new status();
+                stats.initial(window.jsonData);
                 console.log(jsonData)
                 var adventure = document.getElementById('adventure');
                 adventure.onmouseup= function(){stats.Progress(document)};
@@ -58,6 +59,9 @@
         <script>
             class status {
     constructor(monster) {
+
+    }
+   initial(monster){
         this.monster = monster;
         this.statusData= {
             [this.TYPES[1]]: 0,
@@ -70,7 +74,7 @@
             [this.TYPES.ADD]: [],
             [this.TYPES.EVT]: [],
         };
-    }
+                }
 
      TYPES = {
         1: "DAY", //  日期 DAY
